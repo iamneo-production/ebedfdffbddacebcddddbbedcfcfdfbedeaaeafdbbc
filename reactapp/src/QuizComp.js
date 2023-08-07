@@ -107,5 +107,4 @@ const resetQuiz=()=>
         </div>
     );
 }
-
 export default QuizComp;
