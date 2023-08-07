@@ -158,4 +158,3 @@ const resetQuiz=()=>
 }
 
 export default App;
-
