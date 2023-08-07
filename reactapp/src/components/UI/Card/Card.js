@@ -1,48 +1,34 @@
-import React, { useState } from "react";
-import Button from "../Button/Button";
+import React from "react";
 
-const Card = (props) => {
-  const ans = props.answer;
-  const [disabled, setDisabled] = useState(false);
+    
+// }
 
-  const check = (a) => {
-    setDisabled(true);
-    if (a === ans) {
-      props.attempt(true);
-    }
-  };
-
-  return (
-    <div className="card">
-      <h4>{props.question}</h4>
-      <div className="buttons">
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option1)}
-        >
-          {props.options.option1}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option2)}
-        >
-          {props.options.option2}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option3)}
-        >
-          {props.options.option3}
-        </Button>
-        <Button
-          disabled={disabled}
-          onClick={() => check(props.options.option4)}
-        >
-          {props.options.option4}
-        </Button>
-      </div>
-    </div>
-  );
+const CardData = () => 
+{
+    const cardTest =  
+        {
+            Question: "What Color is are the leaves",
+            Answers: [
+                { Answer: "Blue", isCorrect: false },
+                { Answer: "Red", isCorrect: false },
+                { Answer: "Yellow", isCorrect: false },
+                { Answer: "Green", isCorrect: true }
+            ]
+        };
+    return <>
+    {cardTest}
+    </>;
 };
 
-export default Card;
+
+class Card extends React.Component{
+    render(){
+        return <>
+        <h4>What color is are the leaves ?</h4>
+        <button>Blue</button>
+        <button>Red</button>
+        <button>Yellow</button>
+        <button>Green</button>
+        </>;
+    }
+}
