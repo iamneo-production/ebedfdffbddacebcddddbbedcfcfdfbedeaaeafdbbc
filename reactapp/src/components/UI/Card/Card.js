@@ -1,5 +1,8 @@
-import { useState } from "react"; import Button from "../Button/Button";
-const Card = ({ question, correctAnswerMarkUpdate, attempt, options, answer , setQsns,qsn ,setCard,qsnAttempt}) => { // Creating an array of options const optionsArray = [options.option1, options.option2, options.option3, o
+import { useState } from "react";
+import Button from "../Button/Button";
+
+const Card = ({ question, correctAnswerMarkUpdate, attempt, options, answer ,
+setQsns,qsn ,setCard,qsnAttempt}) => { // Creating an array of options const optionsArray = [options.option1, options.option2, options.option3, o
 ptions.option4];
 // State variable to track the marked status of the button const [marked, setMarked] = useState(false);
 // Event handler to handle the click event on the options const click = (clicked) => { // Increase the question attempted setQsns(qsn+1)

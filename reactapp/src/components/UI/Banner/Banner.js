@@ -4,4 +4,6 @@ const Banner = ({score}) => {
   You have answered {score} / 5 &nbsp;Correctly
   </div>
   )
-  }
+}
+
+export default Banner;
