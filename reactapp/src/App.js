@@ -48,15 +48,14 @@ function App() {
                     <Card key={index} question={q.question} correctAnswerMarkUpda
     te={correctAnswerMarkUpdate} attempt={attempt} options={opt} answer={q.answer} 
      setQsns={setqsnAttempt} qsn={ qsnAttempt} setCard={setResult} qsnAttempt={qsnAttempt}
-      />
-                    ))}
-       </div>}
-        {result && <Button onClick={handleResult} 
-        style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400 mt-3"}>Show Results</Button>}
-        {start && <Button onClick={ handleStart}
-        style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button>	}
-       </div>
-     </div>
+            />
+                     ))}
+                 </div>}
+                {result && <Button onClick={handleResult} style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400 mt-3"} >Show Results</Button>}
+                {start && <Button onClick={ handleStart}
+                style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button>	}
+            </div>
+        </div>
     );
 }
 export default App;
