@@ -25,7 +25,7 @@ function App() {
     }
     // Array of questions 
     const questions = [	{ question: "What color are the leaves?", answer: "Green" },
-    	{ question: "What color is the sky?", answer: "Blue" }, 	{ questi on: "What color is a banana?", answer: "Yellow" },	
+    	{ question: "What color is the sky?", answer: "Blue" }, 	{ question: "What color is a banana?", answer: "Yellow" },	
         { question: "What color is a strawberry?", answer: "Red" },	{ question: "What color is a watermelon? ", answer: "Green" } ];
     // Event handler to show the result of the Quiz
     const handleResult = () => { 
@@ -47,12 +47,16 @@ function App() {
                 {card && <div> {questions.map((q, index) => (
                     <Card key={index} question={q.question} correctAnswerMarkUpda
     te={correctAnswerMarkUpdate} attempt={attempt} options={opt} answer={q.answer} 
-     setQsns={setqsnAttempt} qsn={ qsnAttempt} setCard={setResult} qsnAttempt={qsnAttempt} />
-    ))} </div>}
-    {result && <Button onClick={handleResult} style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400 mt-3"}
-    >Show Results</Button>}
-    {start && <Button onClick={ handleStart} style={"bg-orange-300 px10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button>	} </div>
-    </div>
+     setQsns={setqsnAttempt} qsn={ qsnAttempt} setCard={setResult} qsnAttempt={qsnAttempt}
+      />
+                    ))}
+       </div>}
+        {result && <Button onClick={handleResult} 
+        style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400 mt-3"}>Show Results</Button>}
+        {start && <Button onClick={ handleStart}
+        style={"bg-orange-300 px-10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button>	}
+       </div>
+     </div>
     );
 }
 export default App;
