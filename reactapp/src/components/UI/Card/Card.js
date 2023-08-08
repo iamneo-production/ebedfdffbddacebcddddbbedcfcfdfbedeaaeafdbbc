@@ -32,10 +32,10 @@ return (
         <h4 className="pt-3 pb-1">{question}</h4>
         <div className="flex space-x-2">
             {optionsArray.map((option, index) =>
-            <Button key={index} marked={marked} onClick={() => click(optio
-n)} style={!marked ? norm : disable} >{ option }</Button>
-)}
-</div>
-</div>
-) }
+            <Button key={index} marked={marked} onClick={() => click(option)} style={!marked ? norm : disable} >{ option }</Button>
+        )}
+        </div>
+      </div>
+    )
+}
 export default Card;
