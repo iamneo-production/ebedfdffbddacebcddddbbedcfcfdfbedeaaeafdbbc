@@ -1,160 +1,61 @@
-import React from 'react'
-import { useState } from 'react';
-import { Banner } from './components/UI/Banner/Banner';
-import  Button from './components/UI/Button/Button';
-import './quizstyle.css'
-
-const App = () => {
-    var Questionbank = [
-        {
-            Question: "Who is the father of your nation ?",
-            Answers: [
-                { Answer: "Mahatma Gandhi", isCorrect: true },
-                { Answer: "Jawaharlal Nehru", isCorrect: false },
-                { Answer: "Donald Trump", isCorrect: false },
-                { Answer: "Barrack Obama", isCorrect: false }
-            ]
-        },
-        {
-            Question: "What color is are the leaves?",
-            Answers: [
-                { Answer: "Blue", isCorrect: false },
-                { Answer: "Red", isCorrect: false },
-                { Answer: "Yellow", isCorrect: false },
-                { Answer: "Green", isCorrect: true }
-            ]
-        }, {
-            Question: "What color is the sky ",
-            Answers: [
-                { Answer: "Blue", isCorrect: true },
-                { Answer: "Red", isCorrect: false },
-                { Answer: "Yellow", isCorrect: false },
-                { Answer: "Green", isCorrect: false }
-            ]
-        },
-        {
-            Question: "What color is the sky ?",
-            Answers: [
-                { Answer: "Blue", isCorrect: true },
-                { Answer: "Red", isCorrect: false },
-                { Answer: "Yellow", isCorrect: false },
-                { Answer: "Green", isCorrect: false }
-            ]
-        },
-        {
-            Question: "What color is the fire ?",
-            Answers: [
-                { Answer: "Blue", isCorrect: false },
-                { Answer: "Red", isCorrect: false },
-                { Answer: "Yellow", isCorrect: true },
-                { Answer: "Green", isCorrect: false }
-            ]
-        }
-    ]
-
-    //useState Hook
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [score, setScore] = useState(0);
-    const [showScore, setShowScore] = useState(false);
-    const [showQuiz, setShowQuiz] = useState(false);
-    const [showStart, setShowStart] = useState(false);
-    const [questionsCorrect, setQuestionsCorrect] = useState(0);
-
-  const handleResultsButton = () => {
-      if(currentQuestion === 5){
-        setShowStart(true);
-      }
-  }  
-    
-   const handleQuizButton = () => {
-        setShowQuiz(true);
-    }
-
-const handleAnswerResponse=(isCorrect)=>
-{
-    if(isCorrect)
-    {
-        setScore(score+1);
-        setQuestionsCorrect(score+1);
-    }
-
-   const nextQuestion= currentQuestion+1;
-   if(nextQuestion<Questionbank.length)
-   {
-    setCurrentQuestion(nextQuestion);
-   }
-   else{
-    setShowScore(true);
-   }
+import { useState } from "react";
+import Button from "./components/UI/Button/Button";
+import Card from "./components/UI/Card/Card";
+import Banner from "./components/UI/Banner/Banner";
+function App() {
+// State variables to control the start, attempt, question, card and result
+of the Quiz
+const [start, setStart] = useState(true);
+const [attempt, correctAnswerMarkUpdate] = useState(0);
+const [qsnAttempt, setqsnAttempt] = useState(0);
+const [card, setCard] = useState(false);
+const [result, setResult] = useState(false)
+const [banner,setBanner] = useState(false)
+// Event handler to start the Quiz
+const handleStart = () => {
+setStart(false)
+setCard(true)
+correctAnswerMarkUpdate(0)
+setqsnAttempt(0)
+setBanner(false)
 }
-const text = () => {
-    const nextQuestion= currentQuestion+1;
-    if(nextQuestion < Questionbank.length){
-      return "Show Results"
-    } else {                        
-     return "Start Quiz"
-    }
-      
+// Options for the quiz
+const opt = {
+option1 : "Blue",option2 : "Red",option3 : "Yellow",option4 : "Green"
 }
-
-const resetQuiz=()=>
-{
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowScore(false);
+// Array of questions
+const questions = [ { question: "What color are the leaves?", answer: "Gr
+een" }, { question: "What color is the sky?", answer: "Blue" }, { questi
+on: "What color is a banana?", answer: "Yellow" }, { question: "What color
+is a strawberry?", answer: "Red" }, { question: "What color is a watermelon?
+", answer: "Green" } ];
+// Event handler to show the result of the Quiz
+const handleResult = () => {
+setStart(true)
+setBanner(true)
+setCard(false)
+setResult(false)
 }
-
-    return (
-        <div className='app'>
-       <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-            {showScore ? (
-                <div className='score-section'>
-                    <Banner/>
-                    You have answered {score} / {Questionbank.length} Correctly
-                    <>
-                       <Button type="submit" onClick={resetQuiz} text = "Start Quiz"></Button>
-                    </>
-                </div>
-            )
-                : (
-                    <>
-                    <h1>Quizz App</h1>
-                      {!showQuiz && <Button  onClick={() => handleQuizButton()} text = "Start Quiz"></Button>}
-                      {showQuiz && (
-                        <div>
-                        <div className='question-section'>
-                            <div className='question-count'>
-                               <span>{currentQuestion+1}</span>/{Questionbank.length}
-                            </div>
-
-                            <div className='question-text'>
-                             {Questionbank[currentQuestion].Question}
-                            </div>
-                        </div>
-
-                        <div className='answer-section'>
-                          {Questionbank[currentQuestion].Answers.map((answer)=>
-                          (
-                              <button onClick={()=>handleAnswerResponse(answer.isCorrect)}>{answer.Answer}</button>
-                          ))}
-                         <Button>{text()}
-                          </Button>
-                        </div>
-                        
-                         </div>)}
-                    </>
-                )
-            }
-
-        </div>
-    );
+return (
+<div className="flex justify-center mt-4 ">
+<div>
+<div className="flex items-center justify-center space-x-4 mb-12">
+<h1 className="text-3xl">Quizz App</h1>
+<i className="">learn react</i>
+</div>
+{/* {start && <Button onClick={ handleStart} style={"bg-orange300 px-10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button> } */}
+{banner && <Banner score={attempt} />}
+{card && <div> {questions.map((q, index) => (
+<Card key={index} question={q.question} correctAnswerMarkUpda
+te={correctAnswerMarkUpdate} attempt={attempt} options={opt} answer={q.answer}
+setQsns={setqsnAttempt} qsn={ qsnAttempt} setCard={setResult} qsnAttempt={qsn
+Attempt} />
+))}
+</div>}
+{result && <Button onClick={handleResult} style={"bg-orange-300 px10 py-2 rounded hover:bg-orange-400 mt-3"} >Show Results</Button>}
+{start && <Button onClick={ handleStart} style={"bg-orange-300 px10 py-2 rounded hover:bg-orange-400"}>Start Quiz</Button> }
+</div>
+</div>
+);
 }
-
-export default App;
+export default
