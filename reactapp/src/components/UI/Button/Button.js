@@ -1,28 +1,7 @@
-import React from 'react'
-import { useState } from 'react';
-
-interface ButtonProps {
-    onClick: () => void;
-    text : String;
-}
-
-const ButtonFunc = (text) => {
-    if(text === ""){
-        return "Button Works";
-    } else {
-        return text;
-    }
-}
-
-// const Button: React.FC<ButtonProps> = ({onClick, text}) => {
-//     return <>
-//     <button onClick= {onClick}>{ButtonFunc(text)}</button>
-//     </>;
-// };
-
-
-const Button = (ButtonProps) => {
-    return (<button onClick = {ButtonProps.onClick}>{ButtonProps.children}</button>);
-}
-
-export default Button;
+const Button = (props) => {
+    const { btnName = props.children,onClick,marked,style } = props;
+    return (
+        <Button onClick={onClick} disabled={marked} className={style} >{ btnNa
+            me }</button>
+            )
+            }  

@@ -1,6 +1,7 @@
-export const Banner = () => {
-  return <>
-  <div> </div>
-    </>;
-
-};
+const Banner = ({score}) => {
+  return (
+  <div>
+  You have answered {score} / 5 &nbsp;Correctly
+  </div>
+  )
+  }
